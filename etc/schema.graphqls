@@ -1,0 +1,43 @@
+# Mageplaza
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the Mageplaza.com license that is
+# available through the world-wide-web at this URL:
+# https://www.mageplaza.com/LICENSE.txt
+#
+# DISCLAIMER
+#
+# Do not edit or add to this file if you wish to upgrade this extension to newer
+# version in the future.
+#
+# @category    Mageplaza
+# @package     Mageplaza_ReportsGraphQl
+# @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+# @license     https://www.mageplaza.com/LICENSE.txt
+
+type Query {
+    mpReportsAverageOrder (
+        accessToken: String! @doc(description: "Oauth access token that is needed to make requests."),
+        startDate: String @doc(description: "Oauth access token that is needed to make requests."),
+        endDate: String @doc(description: "Oauth access token that is needed to make requests."),
+        website: String @doc(description: "Oauth access token that is needed to make requests."),
+        group: String @doc(description: "Oauth access token that is needed to make requests."),
+        store: String @doc(description: "Oauth access token that is needed to make requests."),
+    ): ReportsAverageOrderOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\AverageOrder") @doc(description: "Searches for an item that matches the id.")
+    mpReportsAverageOrderValue (
+        accessToken: String! @doc(description: "Oauth access token that is needed to make requests."),
+        startDate: String @doc(description: "Oauth access token that is needed to make requests."),
+        endDate: String @doc(description: "Oauth access token that is needed to make requests."),
+        website: String @doc(description: "Oauth access token that is needed to make requests."),
+        group: String @doc(description: "Oauth access token that is needed to make requests."),
+        store: String @doc(description: "Oauth access token that is needed to make requests."),
+    ): ReportsAverageOrderValueOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\AverageOrderValue") @doc(description: "Searches for an item that matches the id.")
+}
+
+type ReportsAverageOrderOutput {
+    total: String @doc(description: "Life Time Average Order")
+}
+type ReportsAverageOrderValueOutput {
+    total: String @doc(description: "Life Time Average Order")
+}

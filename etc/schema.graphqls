@@ -17,27 +17,81 @@
 # @license     https://www.mageplaza.com/LICENSE.txt
 
 type Query {
-    mpReportsAverageOrder (
-        accessToken: String! @doc(description: "Oauth access token that is needed to make requests."),
-        startDate: String @doc(description: "Oauth access token that is needed to make requests."),
-        endDate: String @doc(description: "Oauth access token that is needed to make requests."),
-        website: String @doc(description: "Oauth access token that is needed to make requests."),
-        group: String @doc(description: "Oauth access token that is needed to make requests."),
-        store: String @doc(description: "Oauth access token that is needed to make requests."),
-    ): ReportsAverageOrderOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\AverageOrder") @doc(description: "Searches for an item that matches the id.")
-    mpReportsAverageOrderValue (
-        accessToken: String! @doc(description: "Oauth access token that is needed to make requests."),
-        startDate: String @doc(description: "Oauth access token that is needed to make requests."),
-        endDate: String @doc(description: "Oauth access token that is needed to make requests."),
-        website: String @doc(description: "Oauth access token that is needed to make requests."),
-        group: String @doc(description: "Oauth access token that is needed to make requests."),
-        store: String @doc(description: "Oauth access token that is needed to make requests."),
-    ): ReportsAverageOrderValueOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\AverageOrderValue") @doc(description: "Searches for an item that matches the id.")
+    mpReportsAverageOrderCard (input: MpCardFilters): ReportsAverageOrderCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\AverageOrder") @doc(description: "Searches for an item that matches the id.")
+    mpReportsAverageOrderValueCard (input: MpCardFilters): ReportsAverageOrderValueCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\AverageOrderValue") @doc(description: "Searches for an item that matches the id.")
+    mpReportsBestsellersCard (input: MpCardFilters): ReportsBestsellersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Bestsellers") @doc(description: "Searches for an item that matches the id.")
+    mpReportsConversionFunnelCard (input: MpCardFilters): ReportsConversionFunnelCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\ConversionFunnel") @doc(description: "Searches for an item that matches the id.")
+    mpReportsCustomersCard (input: MpCardFilters): ReportsCustomersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\ConversionFunnel") @doc(description: "Searches for an item that matches the id.")
 }
 
-type ReportsAverageOrderOutput {
+input MpCardFilters {
+    accessToken: String! @doc(description: "Oauth access token that is needed to make requests.")
+    startDate: String @doc(description: "Filter From Date")
+    endDate: String @doc(description: "Filter To Date")
+    compareStartDate: String @doc(description: "Compare Data From Date")
+    compareEndDate: String @doc(description: "Compare Data To Date")
+    website: String @doc(description: "Filter By Website ID")
+    group: String @doc(description: "Filter By Group ID")
+    store: String @doc(description: "Filter By Store ID")
+}
+
+type ReportsCustomersCardOutput {
+    items: [Customer]
+}
+
+type ReportsConversionFunnelCardOutput {
+    product_viewed: Int
+    add_to_cart: Int
+    ordered: Int
+}
+
+type ReportsAverageOrderCardOutput {
     total: String @doc(description: "Life Time Average Order")
 }
-type ReportsAverageOrderValueOutput {
+type ReportsAverageOrderValueCardOutput {
     total: String @doc(description: "Life Time Average Order")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type MpChartDataOuput {
+    label: [String]
+    data: MpChartDataDataOutput
+    days: Int
+    labels: [String]
+    stepSize: Int
+    total: String
+    rate: Float
+    yUnit: MpYUnitOutPut
+    YLabel: String
+    isFill: Boolean
+    isCompare: String
+    name: String
+    compareData:MpChartDataDataOutput
+}
+
+type MpChartDataDataOutput {
+    labels: [String]
+    data: [Float]
+}
+type MpYUnitOutPut {
+    pattern: String
+    precision: Float
+    decimalSymbol: String
+    groupSymbol: String
+    groupLength: Int
+    integerRequired: Boolean
+}
+
+
+type ReportsBestsellersCardOutput {
+    items: [BestsellersProductOutput]  @doc(description: "Life Time Average Order")
+}
+type BestsellersProductOutput {
+    period: String @doc(description: "Life Time Average Order")
+    qty_ordered: String @doc(description: "Life Time Average Order")
+    product_id: String @doc(description: "Life Time Average Order")
+    product_name: String @doc(description: "Life Time Average Order")
+    product_price: String @doc(description: "Life Time Average Order")
+
 }

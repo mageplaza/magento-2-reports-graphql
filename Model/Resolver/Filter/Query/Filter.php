@@ -110,24 +110,24 @@ class Filter
 
     /**
      * @param $name
-     * @return \Mageplaza\Reports\Api\Data\CardInterface|string
+     * @return array
      * @throws NoSuchEntityException
      */
-    public function getResultByName($name, $arg)
+    public function getResultCardByName($name, $arg)
     {
         $params = $this->request->getParams();
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-        $logger->info($arg);
         $params = array_merge($params, $arg);
         $this->request->setParams($params);
         switch ($name) {
             case 'averageOrder':
-                return $this->cardManagement->get('averageOrder');
             case 'averageOrderValue':
-                return $this->cardManagement->get('averageOrderValue');
-            case 'mpGiftTemplate':
+            case 'conversionFunnel':
+                $card = $this->cardManagement->get($name);
+                return $card->getData();
+            case 'bestsellers':
+            case 'customers':
+                $card = $this->cardManagement->get($name);
+                return ['items' => $card->getData()];
             default:
                 return '$this->giftTemplateManagement->get($id)';
         }

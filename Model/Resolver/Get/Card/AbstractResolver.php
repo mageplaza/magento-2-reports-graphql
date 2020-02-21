@@ -21,7 +21,7 @@
 
 declare(strict_types=1);
 
-namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get;
+namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
@@ -36,13 +36,13 @@ class AbstractResolver extends \Mageplaza\ReportsGraphQl\Model\Resolver\Abstract
     /**
      * @param array $args
      *
-     * @return CardInterface|string
+     * @return array
      * @throws GraphQlInputException
      */
     protected function handleArgs(array $args)
     {
         try {
-            return $this->filter->getResultByName($this->_name, $args);
+            return $this->filter->getResultCardByName($this->_name, $args);
         } catch (NoSuchEntityException $e) {
             throw new GraphQlInputException(__($e->getMessage()));
         }

@@ -88,11 +88,13 @@ abstract class AbstractResolver implements ResolverInterface
             throw new GraphQlInputException(__('The module is disabled'));
         }
 
-        if (!$this->auth->isAllowed($args['accessToken'], $this->_aclResource)) {
+        $filters = $args['filters'];
+
+        if (!$this->auth->isAllowed($filters['accessToken'], $this->_aclResource)) {
             throw new GraphQlInputException(__("The consumer isn't authorized to access %1", $this->_aclResource));
         }
 
-        return $this->handleArgs($args);
+        return $this->handleArgs($filters);
     }
 
     /**

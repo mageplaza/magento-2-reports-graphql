@@ -24,8 +24,8 @@ declare(strict_types=1);
 namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card;
 
 /**
- * Class GiftCode
- * @package Mageplaza\GiftCardGraphQl\Model\Resolver\Get
+ * Class Bestsellers
+ * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card
  */
 class Bestsellers extends AbstractResolver
 {

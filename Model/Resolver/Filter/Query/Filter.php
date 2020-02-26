@@ -122,11 +122,31 @@ class Filter
             case 'averageOrder':
             case 'averageOrderValue':
             case 'conversionFunnel':
+            case 'lifetimeSales':
+            case 'orders':
+            case 'repeatCustomerRate':
+            case 'saleByLocation':
+            case 'shipping':
+            case 'tax':
+            case 'totalSales':
                 $card = $this->cardManagement->get($name);
+            $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
+            $logger = new \Zend\Log\Logger();
+            $logger->addWriter($writer);
+            $logger->info($card->getData());
                 return $card->getData();
             case 'bestsellers':
             case 'customers':
+            case 'lastOrders':
+            case 'lastSearches':
+            case 'mostViewedProducts':
+            case 'newCustomers':
+            case 'topSearches':
                 $card = $this->cardManagement->get($name);
+                $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
+                $logger = new \Zend\Log\Logger();
+                $logger->addWriter($writer);
+                $logger->info($card->getData());
                 return ['items' => $card->getData()];
             default:
                 return '$this->giftTemplateManagement->get($id)';

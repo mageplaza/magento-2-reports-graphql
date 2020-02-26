@@ -29,7 +29,7 @@ use Mageplaza\Reports\Api\Data\CardInterface;
 
 /**
  * Class AbstractResolver
- * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get
+ * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card
  */
 class AbstractResolver extends \Mageplaza\ReportsGraphQl\Model\Resolver\AbstractResolver
 {

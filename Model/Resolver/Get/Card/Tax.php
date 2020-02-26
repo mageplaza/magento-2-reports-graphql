@@ -24,10 +24,10 @@ declare(strict_types=1);
 namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card;
 
 /**
- * Class AverageOrderValue
+ * Class Shipping
  * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card
  */
-class AverageOrderValue extends AbstractResolver
+class Tax extends AbstractResolver
 {
     /**
      * @var string
@@ -37,5 +37,5 @@ class AverageOrderValue extends AbstractResolver
     /**
      * @var string
      */
-    protected $_name = 'averageOrderValue';
+    protected $_name = 'tax';
 }

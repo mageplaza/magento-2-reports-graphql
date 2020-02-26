@@ -68,15 +68,25 @@ abstract class AbstractResolver implements ResolverInterface
      * @param Filter $filter
      * @param Data $helper
      * @param Auth $auth
+     * @param string $name
+     * @param string $aclResource
      */
     public function __construct(
         Filter $filter,
         Data $helper,
-        Auth $auth
+        Auth $auth,
+        string $name = '',
+        string $aclResource = ''
     ) {
         $this->filter = $filter;
         $this->helper = $helper;
         $this->auth   = $auth;
+        if (!$this->_aclResource) {
+            $this->_aclResource = $aclResource;
+        }
+        if (!$this->_name) {
+            $this->_name = $name;
+        }
     }
 
     /**

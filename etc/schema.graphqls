@@ -71,7 +71,6 @@ type ReportsShippingCardOutput {
 
 type ReportsSaleByLocationCardOutput {
     items: [MpReportLocation]
-    chartData: MpChartDataOuput
 }
 
 type MpReportLocation {

@@ -118,6 +118,10 @@ class Filter
         $params = $this->request->getParams();
         $params = array_merge($params, $arg);
         $this->request->setParams($params);
+        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
+        $logger = new \Zend\Log\Logger();
+        $logger->addWriter($writer);
+        $logger->info($name);
         switch ($name) {
             case 'averageOrder':
             case 'averageOrderValue':
@@ -129,6 +133,9 @@ class Filter
             case 'shipping':
             case 'tax':
             case 'totalSales':
+            case 'salesByCustomerGroup':
+            case 'salesByHoursChart':
+            case 'salesByWeekdayChart':
                 $card = $this->cardManagement->get($name);
             $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
             $logger = new \Zend\Log\Logger();
@@ -142,6 +149,18 @@ class Filter
             case 'mostViewedProducts':
             case 'newCustomers':
             case 'topSearches':
+            case 'abandonedCart':
+            case 'stockvsSold':
+            case 'customerByLocation':
+            case 'salesByAttributeSet':
+            case 'salesByCategory':
+            case 'salesByCoupon':
+            case 'salesByHours':
+            case 'salesByPayment':
+            case 'salesByPostcode':
+            case 'salesByTaxRate':
+            case 'salesByWeekday':
+            case 'userWishList':
                 $card = $this->cardManagement->get($name);
                 $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
                 $logger = new \Zend\Log\Logger();

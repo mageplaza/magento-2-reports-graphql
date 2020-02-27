@@ -110,6 +110,8 @@ class Filter
 
     /**
      * @param $name
+     * @param $arg
+     *
      * @return array
      * @throws NoSuchEntityException
      */
@@ -118,10 +120,6 @@ class Filter
         $params = $this->request->getParams();
         $params = array_merge($params, $arg);
         $this->request->setParams($params);
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-        $logger->info($name);
         switch ($name) {
             case 'averageOrder':
             case 'averageOrderValue':
@@ -137,10 +135,6 @@ class Filter
             case 'salesByHoursChart':
             case 'salesByWeekdayChart':
                 $card = $this->cardManagement->get($name);
-            $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
-            $logger = new \Zend\Log\Logger();
-            $logger->addWriter($writer);
-            $logger->info($card->getData());
                 return $card->getData();
             case 'bestsellers':
             case 'customers':
@@ -162,13 +156,10 @@ class Filter
             case 'salesByWeekday':
             case 'userWishList':
                 $card = $this->cardManagement->get($name);
-                $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/mp_test.log');
-                $logger = new \Zend\Log\Logger();
-                $logger->addWriter($writer);
-                $logger->info($card->getData());
+
                 return ['items' => $card->getData()];
             default:
-                return '$this->giftTemplateManagement->get($id)';
+                return [];
         }
     }
 }

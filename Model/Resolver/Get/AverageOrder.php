@@ -24,8 +24,8 @@ declare(strict_types=1);
 namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get;
 
 /**
- * Class GiftCode
- * @package Mageplaza\GiftCardGraphQl\Model\Resolver\Get
+ * Class AverageOrder
+ * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get
  */
 class AverageOrder extends AbstractResolver
 {

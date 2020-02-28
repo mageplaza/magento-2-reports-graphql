@@ -25,7 +25,6 @@ namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Mageplaza\Reports\Api\Data\CardInterface;
 
 /**
  * Class AbstractResolver

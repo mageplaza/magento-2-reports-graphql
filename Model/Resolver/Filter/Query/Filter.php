@@ -101,7 +101,7 @@ class Filter
         }
 
         $detailManagement = $this->helperData->createObject('\Mageplaza\ReportsPro\Model\Api\DetailManagement');
-        $list             = $detailManagement->get($searchCriteria, $name);
+        $list             = $detailManagement->get($name, $searchCriteria);
         $listArray        = [];
 
         foreach ($list->getItems() as $item) {

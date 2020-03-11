@@ -303,29 +303,29 @@ type ReportsCustomersCardOutput {
 }
 
 type MpReportCustomer {
-    x_forwarded_for: String
-    customer_note: String
-    created_at: String
-    updated_at: String
-    total_item_count: String
-    customer_gender: String
-    discount_tax_compensation_amount: String
-    base_discount_tax_compensation_amount: String
-    shipping_discount_tax_compensation_amount: String
-    base_shipping_discount_tax_compensation_amnt: String
-    discount_tax_compensation_invoiced: String
-    base_discount_tax_compensation_invoiced: String
-    discount_tax_compensation_refunded: String
-    base_discount_tax_compensation_refunded: String
-    shipping_incl_tax: String
-    base_shipping_incl_tax: String
-    coupon_rule_name: String
-    gift_message_id: String
-    paypal_ipn_customer_notified: String
-    orders_count: String
-    name: String
-    orders_avg_amount: String
-    orders_sum_amount: String
+    x_forwarded_for: String @doc(description: "Show only on Standard Edition")
+    customer_note: String @doc(description: "Show only on Standard Edition")
+    created_at: String @doc(description: "Show only on Standard Edition")
+    updated_at: String @doc(description: "Show only on Standard Edition")
+    total_item_count: String @doc(description: "Show only on Standard Edition")
+    customer_gender: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    shipping_discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    base_shipping_discount_tax_compensation_amnt: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_invoiced: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_invoiced: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_refunded: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_refunded: String @doc(description: "Show only on Standard Edition")
+    shipping_incl_tax: String @doc(description: "Show only on Standard Edition")
+    base_shipping_incl_tax: String @doc(description: "Show only on Standard Edition")
+    coupon_rule_name: String @doc(description: "Show only on Standard Edition")
+    gift_message_id: String @doc(description: "Show only on Standard Edition")
+    paypal_ipn_customer_notified: String @doc(description: "Show only on Standard Edition")
+    orders_count: String @doc(description: "Show only on Standard Edition")
+    name: String @doc(description: "Show only on Standard Edition")
+    orders_avg_amount: String @doc(description: "Show only on Standard Edition")
+    orders_sum_amount: String @doc(description: "Show only on Standard Edition")
 }
 
 type ReportsConversionFunnelCardOutput {

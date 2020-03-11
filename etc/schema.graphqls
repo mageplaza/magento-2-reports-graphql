@@ -80,7 +80,8 @@ type MpReportLocation {
 }
 
 type ReportsRepeatCustomerRateCardOutput {
-    repeat_rate: String
+    total: String
+    rate: Float
     chartData: MpChartDataOuput
 }
 

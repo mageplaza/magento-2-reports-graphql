@@ -29,7 +29,7 @@ type Query {
     mpReportsNewCustomersCard (filters: MpCardFilters): ReportsNewCustomersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\NewCustomers") @doc(description: "Searches for NewCustomers card information matches the filter.")
     mpReportsOrdersCard (filters: MpCardFilters): ReportsOrdersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Orders") @doc(description: "Searches for Orders card information matches the filter.")
     mpReportsRepeatCustomerRateCard (filters: MpCardFilters): ReportsRepeatCustomerRateCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\RepeatCustomerRate") @doc(description: "Searches for RepeatCustomerRate card information matches the filter.")
-    mpReportsSaleByLocationCard (filters: MpCardFilters): ReportsSaleByLocationCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\SaleByLocation") @doc(description: "Searches for SaleByLocation card information matches the filter.")
+    mpReportsSalesByLocationCard (filters: MpCardFilters): ReportsSalesByLocationCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\SalesByLocation") @doc(description: "Searches for SalesByLocation card information matches the filter.")
     mpReportsShippingCard (filters: MpCardFilters): ReportsShippingCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Shipping") @doc(description: "Searches for Shipping card information matches the filter.")
     mpReportsTaxCard (filters: MpCardFilters): ReportsTaxCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Tax") @doc(description: "Searches for Tax card information matches the filter.")
     mpReportsTopSearchesCard (filters: MpCardFilters): ReportsTopSearchesCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\TopSearches") @doc(description: "Searches for TopSearches card information matches the filter.")
@@ -69,7 +69,7 @@ type ReportsShippingCardOutput {
     chartData: MpChartDataOuput
 }
 
-type ReportsSaleByLocationCardOutput {
+type ReportsSalesByLocationCardOutput {
     items: [MpReportLocation]
 }
 

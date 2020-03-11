@@ -131,7 +131,7 @@ class Filter
             case 'lifetimeSales':
             case 'orders':
             case 'repeatCustomerRate':
-            case 'saleByLocation':
+            case 'salesByLocation':
             case 'shipping':
             case 'tax':
             case 'totalSales':

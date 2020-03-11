@@ -24,10 +24,10 @@ declare(strict_types=1);
 namespace Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card;
 
 /**
- * Class SaleByLocation
+ * Class SalesByLocation
  * @package Mageplaza\ReportsGraphQl\Model\Resolver\Get\Card
  */
-class SaleByLocation extends AbstractResolver
+class SalesByLocation extends AbstractResolver
 {
     /**
      * @var string
@@ -37,5 +37,5 @@ class SaleByLocation extends AbstractResolver
     /**
      * @var string
      */
-    protected $_name = 'saleByLocation';
+    protected $_name = 'salesByLocation';
 }

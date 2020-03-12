@@ -104,9 +104,11 @@ class Filter
         $list             = $detailManagement->get($name, $searchCriteria);
         $listArray        = [];
 
+        $count = 0;
         foreach ($list->getItems() as $item) {
-            $listArray[$item->getId()]          = $item->getData();
-            $listArray[$item->getId()]['model'] = $item;
+            $listArray[$count]          = $item->getData();
+            $listArray[$count]['model'] = $item;
+            $count++;
         }
 
         return $this->searchResultFactory->create($list->getTotalCount(), $listArray);

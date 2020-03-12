@@ -100,6 +100,7 @@ class Filter
      */
     public function getResult($args, $name): SearchResult
     {
+        $this->addFilterParams($args);
         $searchCriteria = $this->searchCriteriaBuilder->build($name, $args);
         $searchCriteria->setCurrentPage($args['currentPage']);
         $searchCriteria->setPageSize($args['pageSize']);
@@ -117,7 +118,7 @@ class Filter
             $listArray[$count] = $item->getData();
 
             if ($item->getProductId()) {
-                $product = $this->productFactory->create()->load($item->getProductId());
+                $product                               = $this->productFactory->create()->load($item->getProductId());
                 $listArray[$count]['product']          = $product->getData();
                 $listArray[$count]['product']['model'] = $product;
             }
@@ -131,16 +132,14 @@ class Filter
 
     /**
      * @param $name
-     * @param $arg
+     * @param $args
      *
      * @return array
      * @throws NoSuchEntityException
      */
-    public function getResultCardByName($name, $arg)
+    public function getResultCardByName($name, $args)
     {
-        $params = $this->request->getParams();
-        $params = array_merge($params, $arg);
-        $this->request->setParams($params);
+        $this->addFilterParams($args);
         switch ($name) {
             case 'averageOrder':
             case 'averageOrderValue':
@@ -183,5 +182,15 @@ class Filter
             default:
                 return [];
         }
+    }
+
+    /**
+     * @param $args
+     */
+    protected function addFilterParams($args)
+    {
+        $params = $this->request->getParams();
+        $params = array_merge($params, $args);
+        $this->request->setParams($params);
     }
 }

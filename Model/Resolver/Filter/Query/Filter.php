@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace Mageplaza\ReportsGraphQl\Model\Resolver\Filter\Query;
 
+use Magento\Catalog\Model\ProductFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
@@ -59,6 +60,10 @@ class Filter
      * @var Data
      */
     private $helperData;
+    /**
+     * @var ProductFactory
+     */
+    private $productFactory;
 
     /**
      * Filter constructor.
@@ -66,6 +71,7 @@ class Filter
      * @param Builder $searchCriteriaBuilder
      * @param SearchResultFactory $searchResultFactory
      * @param RequestInterface $request
+     * @param ProductFactory $productFactory
      * @param CardManagementInterface $cardManagement
      * @param Data $helperData
      */
@@ -73,6 +79,7 @@ class Filter
         Builder $searchCriteriaBuilder,
         SearchResultFactory $searchResultFactory,
         RequestInterface $request,
+        ProductFactory $productFactory,
         CardManagementInterface $cardManagement,
         Data $helperData
     ) {
@@ -81,6 +88,7 @@ class Filter
         $this->cardManagement        = $cardManagement;
         $this->request               = $request;
         $this->helperData            = $helperData;
+        $this->productFactory        = $productFactory;
     }
 
     /**
@@ -106,7 +114,14 @@ class Filter
 
         $count = 0;
         foreach ($list->getItems() as $item) {
-            $listArray[$count]          = $item->getData();
+            $listArray[$count] = $item->getData();
+
+            if ($item->getProductId()) {
+                $product = $this->productFactory->create()->load($item->getProductId());
+                $listArray[$count]['product']          = $product->getData();
+                $listArray[$count]['product']['model'] = $product;
+            }
+
             $listArray[$count]['model'] = $item;
             $count++;
         }

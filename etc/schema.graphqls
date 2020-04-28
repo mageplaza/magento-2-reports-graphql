@@ -1,0 +1,421 @@
+# Mageplaza
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the Mageplaza.com license that is
+# available through the world-wide-web at this URL:
+# https://www.mageplaza.com/LICENSE.txt
+#
+# DISCLAIMER
+#
+# Do not edit or add to this file if you wish to upgrade this extension to newer
+# version in the future.
+#
+# @category    Mageplaza
+# @package     Mageplaza_ReportsGraphQl
+# @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+# @license     https://www.mageplaza.com/LICENSE.txt
+
+type Query {
+    mpReportsAverageOrderCard (filters: MpCardFilters): ReportsAverageOrderCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\AverageOrder") @doc(description: "Searches for AverageOrder card information matches the filter.")
+    mpReportsAverageOrderValueCard (filters: MpCardFilters): ReportsAverageOrderValueCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\AverageOrderValue") @doc(description: "Searches for AverageOrderValue card information matches the filter.")
+    mpReportsBestsellersCard (filters: MpCardFilters): ReportsBestsellersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Bestsellers") @doc(description: "Searches for Bestsellers card information matches the filter.")
+    mpReportsConversionFunnelCard (filters: MpCardFilters): ReportsConversionFunnelCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\ConversionFunnel") @doc(description: "Searches for ConversionFunnel card information matches the filter.")
+    mpReportsCustomersCard (filters: MpCardFilters): ReportsCustomersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Customers") @doc(description: "Searches for Customers card information matches the filter.")
+    mpReportsLastOrdersCard (filters: MpCardFilters): ReportsLastOrdersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\LastOrders") @doc(description: "Searches for LastOrders card information matches the filter.")
+    mpReportsLastSearchesCard (filters: MpCardFilters): ReportsLastSearchesCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\LastSearches") @doc(description: "Searches for LastSearches card information matches the filter.")
+    mpReportsLifetimeSalesCard (filters: MpCardFilters): ReportsLifetimeSalesCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\LifetimeSales") @doc(description: "Searches for LifetimeSales card information matches the filter.")
+    mpReportsMostViewedProductsCard (filters: MpCardFilters): ReportsMostViewedProductsCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\MostViewedProducts") @doc(description: "Searches for MostViewedProducts card information matches the filter.")
+    mpReportsNewCustomersCard (filters: MpCardFilters): ReportsNewCustomersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\NewCustomers") @doc(description: "Searches for NewCustomers card information matches the filter.")
+    mpReportsOrdersCard (filters: MpCardFilters): ReportsOrdersCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Orders") @doc(description: "Searches for Orders card information matches the filter.")
+    mpReportsRepeatCustomerRateCard (filters: MpCardFilters): ReportsRepeatCustomerRateCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\RepeatCustomerRate") @doc(description: "Searches for RepeatCustomerRate card information matches the filter.")
+    mpReportsSalesByLocationCard (filters: MpCardFilters): ReportsSalesByLocationCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\SalesByLocation") @doc(description: "Searches for SalesByLocation card information matches the filter.")
+    mpReportsShippingCard (filters: MpCardFilters): ReportsShippingCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Shipping") @doc(description: "Searches for Shipping card information matches the filter.")
+    mpReportsTaxCard (filters: MpCardFilters): ReportsTaxCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\Tax") @doc(description: "Searches for Tax card information matches the filter.")
+    mpReportsTopSearchesCard (filters: MpCardFilters): ReportsTopSearchesCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\TopSearches") @doc(description: "Searches for TopSearches card information matches the filter.")
+    mpReportsTotalSalesCard (filters: MpCardFilters): ReportsTotalSalesCardOutput @resolver(class: "Mageplaza\\ReportsGraphQl\\Model\\Resolver\\Get\\Card\\TotalSales") @doc(description: "Searches for TotalSales card information matches the filter.")
+}
+
+input MpCardFilters {
+    accessToken: String! @doc(description: "Oauth access token that is needed to make requests.")
+    startDate: String @doc(description: "Filter From Date")
+    endDate: String @doc(description: "Filter To Date")
+    compareStartDate: String @doc(description: "Compare Data From Date")
+    compareEndDate: String @doc(description: "Compare Data To Date")
+    website: String @doc(description: "Filter By Website ID")
+    group: String @doc(description: "Filter By Group ID")
+    store: String @doc(description: "Filter By Store ID")
+}
+
+type ReportsTotalSalesCardOutput {
+    total: String @doc(description: "Sales Total")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type ReportsTopSearchesCardOutput {
+    items: [MpReportsearch]
+}
+
+type ReportsTaxCardOutput {
+    total: String @doc(description: "Shipping Total")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type ReportsShippingCardOutput {
+    total: String @doc(description: "Shipping Total")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type ReportsSalesByLocationCardOutput {
+    items: [MpReportLocation]
+}
+
+type MpReportLocation {
+    country: String
+    count: String
+    rate: Float
+}
+
+type ReportsRepeatCustomerRateCardOutput {
+    total: String
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type ReportsOrdersCardOutput {
+    total: String @doc(description: "Order Total")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type ReportsNewCustomersCardOutput {
+    items: [MpReportNewCustomer]
+}
+
+type MpReportNewCustomer {
+    entity_id: String
+    website_id: String
+    email: String
+    group_id: String
+    increment_id: String
+    store_id: String
+    created_at: String
+    updated_at: String
+    is_active: String
+    disable_auto_group_change: String
+    created_in: String
+    prefix: String
+    firstname: String
+    middlename: String
+    lastname: String
+    suffix: String
+    dob: String
+    password_hash: String
+    rp_token: String
+    rp_token_created_at: String
+    default_billing: String
+    default_shipping: String
+    taxvat: String
+    confirmation: String
+    gender: String
+    failures_num: String
+    first_failure: String
+    lock_expires: String
+    freshsales_entity: String
+    freshsales_lead_entity: String
+    freshsales_contact_entity: String
+    name: String
+}
+
+type ReportsMostViewedProductsCardOutput {
+    items: [MpMostViewedProduct]
+}
+
+type MpMostViewedProduct {
+    views: String
+    entity_id: String
+    attribute_set_id: String
+    type_id: String
+    sku: String
+    has_options: String
+    required_options: String
+    created_at: String
+    updated_at: String
+    name: String
+    image: String
+    small_image: String
+    thumbnail: String
+    options_container: String
+    msrp_display_actual_price_type: String
+    url_key: String
+    activity: String
+    style_bags: String
+    material: String
+    strap_bags: String
+    features_bags: String
+    status: String
+    visibility: String
+    tax_class_id: String
+    performance_fabric: String
+    price: String
+    description: String
+    store_id: String
+}
+
+type ReportsLifetimeSalesCardOutput {
+    total: String
+}
+
+type ReportsLastSearchesCardOutput {
+    items: [MpReportsearch]
+}
+
+type MpReportsearch {
+    query_id: String
+    query_text: String
+    num_results: String
+    popularity: String
+    redirect: String
+    store_id: String
+    display_in_terms: String
+    is_active: String
+    is_processed: String
+    updated_at: String
+}
+
+type ReportsLastOrdersCardOutput {
+    items: [MpReportOrder]
+}
+
+type MpReportOrder {
+    entity_id: String
+    state: String
+    status: String
+    coupon_code: String
+    protect_code: String
+    shipping_description: String
+    is_virtual: String
+    store_id: String
+    customer_id: String
+    base_discount_amount: String
+    base_discount_canceled: String
+    base_discount_invoiced: String
+    base_discount_refunded: String
+    base_grand_total: String
+    base_shipping_amount: String
+    base_shipping_canceled: String
+    base_shipping_invoiced: String
+    base_shipping_refunded: String
+    base_shipping_tax_amount: String
+    base_shipping_tax_refunded: String
+    base_subtotal: String
+    base_subtotal_canceled: String
+    base_subtotal_invoiced: String
+    base_subtotal_refunded: String
+    base_tax_amount: String
+    base_tax_canceled: String
+    base_tax_invoiced: String
+    base_tax_refunded: String
+    base_to_global_rate: String
+    base_to_order_rate: String
+    base_total_canceled: String
+    base_total_invoiced: String
+    base_total_invoiced_cost: String
+    base_total_offline_refunded: String
+    base_total_online_refunded: String
+    base_total_paid: String
+    base_total_qty_ordered: String
+    base_total_refunded: String
+    discount_amount: String
+    discount_canceled: String
+    discount_invoiced: String
+    discount_refunded: String
+    grand_total: String
+    shipping_amount: String
+    shipping_canceled: String
+    shipping_invoiced: String
+    shipping_refunded: String
+    shipping_tax_amount: String
+    shipping_tax_refunded: String
+    store_to_base_rate: String
+    store_to_order_rate: String
+    subtotal: String
+    subtotal_canceled: String
+    subtotal_invoiced: String
+    subtotal_refunded: String
+    tax_amount: String
+    tax_canceled: String
+    tax_invoiced: String
+    tax_refunded: String
+    total_canceled: String
+    total_invoiced: String
+    total_offline_refunded: String
+    total_online_refunded: String
+    total_paid: String
+    total_qty_ordered: String
+    total_refunded: String
+    can_ship_partially: String
+    can_ship_partially_item: String
+    customer_is_guest: String
+    customer_note_notify: String
+    billing_address_id: String
+    customer_group_id: String
+    edit_increment: String
+    email_sent: String
+    send_email: String
+    forced_shipment_with_invoice: String
+    payment_auth_expiration: String
+    quote_address_id: String
+    quote_id: String
+    shipping_address_id: String
+    adjustment_negative: String
+    adjustment_positive: String
+    base_adjustment_negative: String
+    base_adjustment_positive: String
+    base_shipping_discount_amount: String
+    base_subtotal_incl_tax: String
+    base_total_due: String
+    payment_authorization_amount: String
+    shipping_discount_amount: String
+    subtotal_incl_tax: String
+    total_due: String
+    weight: String
+    customer_dob: String
+    increment_id: String
+    applied_rule_ids: String
+    base_currency_code: String
+    customer_email: String
+    customer_firstname: String
+    customer_lastname: String
+    customer_middlename: String
+    customer_prefix: String
+    customer_suffix: String
+    customer_taxvat: String
+    discount_description: String
+    ext_customer_id: String
+    ext_order_id: String
+    global_currency_code: String
+    hold_before_state: String
+    hold_before_status: String
+    order_currency_code: String
+    original_increment_id: String
+    relation_child_id: String
+    relation_child_real_id: String
+    relation_parent_id: String
+    relation_parent_real_id: String
+    remote_ip: String
+    shipping_method: String
+    store_currency_code: String
+    store_name: String
+    x_forwarded_for: String
+    customer_note: String
+    created_at: String
+    updated_at: String
+    total_item_count: String
+    customer_gender: String
+    discount_tax_compensation_amount: String
+    base_discount_tax_compensation_amount: String
+    shipping_discount_tax_compensation_amount: String
+    base_shipping_discount_tax_compensation_amnt: String
+    discount_tax_compensation_invoiced: String
+    base_discount_tax_compensation_invoiced: String
+    discount_tax_compensation_refunded: String
+    base_discount_tax_compensation_refunded: String
+    shipping_incl_tax: String
+    base_shipping_incl_tax: String
+    coupon_rule_name: String
+    gift_message_id: String
+    paypal_ipn_customer_notified: String
+    items_count: String
+    customer: String
+    revenue: String
+}
+
+type ReportsCustomersCardOutput {
+    items: [MpReportCustomer]
+}
+
+type MpReportCustomer {
+    x_forwarded_for: String @doc(description: "Show only on Standard Edition")
+    customer_note: String @doc(description: "Show only on Standard Edition")
+    created_at: String @doc(description: "Show only on Standard Edition")
+    updated_at: String @doc(description: "Show only on Standard Edition")
+    total_item_count: String @doc(description: "Show only on Standard Edition")
+    customer_gender: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    shipping_discount_tax_compensation_amount: String @doc(description: "Show only on Standard Edition")
+    base_shipping_discount_tax_compensation_amnt: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_invoiced: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_invoiced: String @doc(description: "Show only on Standard Edition")
+    discount_tax_compensation_refunded: String @doc(description: "Show only on Standard Edition")
+    base_discount_tax_compensation_refunded: String @doc(description: "Show only on Standard Edition")
+    shipping_incl_tax: String @doc(description: "Show only on Standard Edition")
+    base_shipping_incl_tax: String @doc(description: "Show only on Standard Edition")
+    coupon_rule_name: String @doc(description: "Show only on Standard Edition")
+    gift_message_id: String @doc(description: "Show only on Standard Edition")
+    paypal_ipn_customer_notified: String @doc(description: "Show only on Standard Edition")
+    orders_count: String @doc(description: "Show only on Standard Edition")
+    name: String @doc(description: "Show only on Standard Edition")
+    orders_avg_amount: String @doc(description: "Show only on Standard Edition")
+    orders_sum_amount: String @doc(description: "Show only on Standard Edition")
+}
+
+type ReportsConversionFunnelCardOutput {
+    product_viewed: Int
+    add_to_cart: Int
+    ordered: Int
+}
+
+type ReportsAverageOrderCardOutput {
+    total: String @doc(description: "Life Time Average Order")
+}
+type ReportsAverageOrderValueCardOutput {
+    total: String @doc(description: "Life Time Average Order")
+    rate: Float
+    chartData: MpChartDataOuput
+}
+
+type MpChartDataOuput {
+    label: [String]
+    data: MpChartDataDataOutput
+    days: Int
+    labels: [String]
+    stepSize: Int
+    total: String
+    rate: Float
+    yUnit: MpYUnitOutPut
+    YLabel: String
+    isFill: Boolean
+    isCompare: String
+    name: String
+    compareData:MpChartDataDataOutput
+}
+
+type MpChartDataDataOutput {
+    labels: [String]
+    data: [Float]
+}
+type MpYUnitOutPut {
+    pattern: String
+    precision: Float
+    decimalSymbol: String
+    groupSymbol: String
+    groupLength: Int
+    integerRequired: Boolean
+}
+
+type ReportsBestsellersCardOutput {
+    items: [BestsellersProductOutput]  @doc(description: "Life Time Average Order")
+}
+
+type BestsellersProductOutput {
+    period: String @doc(description: "Life Time Average Order")
+    qty_ordered: String @doc(description: "Life Time Average Order")
+    product_id: String @doc(description: "Life Time Average Order")
+    product_name: String @doc(description: "Life Time Average Order")
+    product_price: String @doc(description: "Life Time Average Order")
+}

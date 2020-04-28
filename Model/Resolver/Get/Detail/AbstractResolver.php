@@ -41,7 +41,7 @@ class AbstractResolver extends \Mageplaza\ReportsGraphQl\Model\Resolver\Abstract
     protected function handleArgs(array $args)
     {
         $args['currentPage'] = isset($args['currentPage']) ? $args['currentPage'] : 1;
-        $args['pageSize'] = isset($args['pageSize']) ? $args['pageSize'] : 1;
+        $args['pageSize']    = isset($args['pageSize']) ? $args['pageSize'] : 1;
         if ($args['currentPage'] < 1) {
             throw new GraphQlInputException(__('currentPage value must be greater than 0.'));
         }

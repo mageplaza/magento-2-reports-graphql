@@ -52,14 +52,17 @@ class Filter
      * @var CardManagementInterface
      */
     private $cardManagement;
+
     /**
      * @var RequestInterface
      */
     private $request;
+
     /**
      * @var Data
      */
     private $helperData;
+
     /**
      * @var ProductFactory
      */

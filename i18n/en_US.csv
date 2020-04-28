@@ -1,0 +1,6 @@
+"The module is disabled","The module is disabled"
+"The consumer isn't authorized to access %1","The consumer isn't authorized to access %1"
+"Module Mageplaza_ReportsPro does not exits","Module Mageplaza_ReportsPro does not exits"
+"currentPage value must be greater than 0.","currentPage value must be greater than 0."
+"pageSize value must be greater than 0.","pageSize value must be greater than 0."
+"currentPage value %1 specified is greater than the %2 page(s) available.","currentPage value %1 specified is greater than the %2 page(s) available."

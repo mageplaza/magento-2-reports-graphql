@@ -1,5 +1,7 @@
 # Magento 2 Reports GraphQL / PWA
 
+**Magento 2 Reports GraphQL is now a part of Mageplaza Reports that adds GraphQL features and supports PWA compatibility.**
+
 [Mageplaza Reports for Magento 2](https://www.mageplaza.com/magento-2-reports-extension/) brings efficiency and convenience for store owners to bring all your store information under their eyes. 
 
 The extension provides intuitive and insightful reports that cover all critical data necessary for store owners to make crucial business decisions. All the critical data can be recorded from customers, orders, sales, and products, which are indispensable to understanding and measuring an online store’s operation, performance, and effectiveness. With Mageplaza reports, you can get clear pictures of all these aspects by viewing data collected in a specific period of time, such as one week, one month, and more. 
@@ -11,8 +13,6 @@ You can customize your report dashboard from the admin backend. If you want to r
 One more remarkable feature of this module is that it allows you to create and switch to different report dashboards, such as default store view or all store views. After completing the new layout setup, you can save the layout to view next time more conveniently. 
 
 Besides, in the new advanced reports, you will be able to access more data, including sales by location, repeat customer rate, conversion funnel, extra card report, and more in the higher versions of the extension. 
-
-What’s more, **Magento 2 Reports GraphQL is now a part of Mageplaza Reports that adds GraphQL features and supports PWA compatibility.** 
 
 ## 1. How to install
 Run the following command in Magento 2 root folder:
